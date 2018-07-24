@@ -1,0 +1,73 @@
+@import 'variables';
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
+@import 'bootswatch';
+
+
+#searchFeature > .row {
+    justify-content: center;
+    margin: 20px;
+}
+
+#exampleModal {
+
+    .modal-dialog{
+
+        .modal-content{
+
+        }
+
+        .modal-body{
+            margin : auto;
+            
+        }
+
+        .modal-footer{
+
+        }
+    }
+}
+#footerId {
+    text-align: center;
+}
+
+#createRepoWidget {
+    //background-color: #ecf0f1;
+    height: 75%;
+
+    .card{
+
+        #cardBody{
+            height: 75%;
+        }
+    }
+}
+
+#footerId{
+    //background-color:#ecf0f1; 
+    margin-top: 10px;
+}
+
+#buttonSection {
+    text-align: center;
+}
+
+#input-box-size{
+    width: 75%;
+}
+
+.alignCenter{
+    text-align: center;
+}
+
+#repoName{
+    margin: auto;
+}
+
+
+
+
+
