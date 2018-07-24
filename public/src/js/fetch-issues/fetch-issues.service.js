@@ -3,7 +3,7 @@
 import {renderConfirmMsg}  from '../create-repo/message-render.js';
 
 const rootUrl = "https://api.github.com/";
-const token = "Bearer eef87f267a7a90d9685d34df2079d58d50284840";
+const token = "Bearer 529bc0d5e46ad8501d290d4388110b38998b7808";
 const user = 'lathajb';
 
 
@@ -16,26 +16,14 @@ function fetchIssues(requestObj) {
             "User-Agent": requestObj.repoName
         });
 
-        fetch(rootUrl + "repos/"+user+"/"+requestObj.repoName+"/issues", {
+        return fetch(rootUrl + "repos/"+user+"/"+requestObj.repoName+"/issues", {
             method: "GET",
             headers: header,
             mode: "cors", 
             credentials: "same-origin", 
             
-        }).then((data) => {
-            console.log(data);
-            
-            if(data.ok === false){
-                renderConfirmMsg(data.statusText,"error");
-            }else {
-                var msg = 'Issues Retrieved Successfully';
-                renderConfirmMsg(msg,"success");
-            }
-            }).catch((error) => {
-            console.log('There has been a problem while retriving issue operation: ', error.message);
-            let msg = 'Error While retreiving Issue';
-            renderConfirmMsg(error.message,"error");
-        });
+        }).then(response => response.json()) 
+        .catch(error => console.error(`Fetch Error =\n`, error));
         
 
     }

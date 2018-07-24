@@ -2,6 +2,7 @@
 
 const createHTMLElement = require('../github-login/createHTMLElement');
 import {fetchIssuesController} from './fetch-issues.controller.js';
+import {renderConfirmMsg}  from '../create-repo/message-render.js';
 
 //module.exports = (recastObj) => {
     function fetchIssuesWidget(recastObj){
@@ -62,13 +63,24 @@ import {fetchIssuesController} from './fetch-issues.controller.js';
                         e.preventDefault();
                         console.log("jb");
                          recastObj.repoName = document.getElementById('repositoryName').value
-                         document.getElementById('issues-details').append(fetchIssuesController(recastObj));
+                         //let issueDetails = fetchIssuesController(recastObj);
+                        
+                        fetchIssuesController(recastObj)
+                            .then((data) => {
+                            console.log(data); 
+                            issueListWidget(data);
+                            }).catch((error) => {
+                            var msg = 'Error While retreving issues';
+                            renderConfirmMsg(msg,"error");
+                        });
+
+                         
                  });
-               
-      
-  
+        
        return githubFetchIssueForm;
 };
+
+
 
 
 
