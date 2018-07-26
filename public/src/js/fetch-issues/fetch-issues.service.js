@@ -3,7 +3,7 @@
 import {renderConfirmMsg}  from '../create-repo/message-render.js';
 
 const rootUrl = "https://api.github.com/";
-const token = "Bearer 529bc0d5e46ad8501d290d4388110b38998b7808";
+const token = "Bearer 1d7bdc0f9eeb455f58457772aa2cac1f8345677e";
 const user = 'lathajb';
 
 

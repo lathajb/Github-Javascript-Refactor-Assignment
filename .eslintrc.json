@@ -1,0 +1,11 @@
+{
+    //"linebreak-style": 0,
+    "extends": "airbnb-base",
+    //"extends": "eslint:recommended"
+   // "extends": "eslint:recommended",
+   "env": {
+       "browser": true
+   }
+   
+}
+

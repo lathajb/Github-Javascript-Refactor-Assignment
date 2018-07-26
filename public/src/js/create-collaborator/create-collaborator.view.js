@@ -5,18 +5,11 @@
 import {createCollaboratorWidget} from './create-collaborator.widget';
 
 
-let collaboratorObj = {
-    "user": "lathajb",
-    "repoName": null,
-    "collaborator": "Triveni-Gaikwad"
-
-};
-
 
 function createCollaboratorView(recastObj) {
     //collaboratorObj.repoName = recastObj.repoName;
     
-    const createCollaboratorModal = createCollaboratorWidget(collaboratorObj);
+    const createCollaboratorModal = createCollaboratorWidget();
 
     const widget = document.getElementById('createWidget');
       const parentObj = document.getElementById('searchFeature');
@@ -24,7 +17,7 @@ function createCollaboratorView(recastObj) {
         parentObj.removeChild(document.getElementById('createWidget'));
       }
 
-    return document.getElementById('searchFeature').append(createCollaboratorModal);
+    return parentObj.appendChild(createCollaboratorModal);
 }
 
 export { createCollaboratorView };

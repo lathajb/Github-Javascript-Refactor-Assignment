@@ -7,12 +7,14 @@ function fetchIssuesView(recastObj) {
 
     const fetchIssuesModal = fetchIssuesWidget(recastObj);
 
+    console.log(JSON.stringify(fetchIssuesModal)+" fetchIssuesModal");
     const widget = document.getElementById('createWidget');
       const parentObj = document.getElementById('searchFeature');
       if (widget !== null) {
         parentObj.removeChild(document.getElementById('createWidget'));
       }
-    return document.getElementById('searchFeature').append(fetchIssuesModal);
+
+    return parentObj.appendChild(fetchIssuesModal);
 
 }
 

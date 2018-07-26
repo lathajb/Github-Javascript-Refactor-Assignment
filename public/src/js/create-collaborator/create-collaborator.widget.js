@@ -7,7 +7,7 @@ import {createCollaboratorController} from './create-collaborator.controller';
 
 //module.exports = (collaboratorObj) => {
 
-function createCollaboratorWidget(collaboratorObj){
+function createCollaboratorWidget(){
       
       const githubCollaboratorForm = createHTMLElement(`
         <div class="createWidget" id="createWidget">
@@ -45,14 +45,6 @@ function createCollaboratorWidget(collaboratorObj){
     </div>
     </div>
       `);
-       
-            const addButton = githubCollaboratorForm.querySelector('#confirmId');
-                
-                 addButton.addEventListener('click', e => {
-                        e.preventDefault();
-                        collaboratorObj.repoName = document.getElementById('repoName').value
-                        createCollaboratorController(collaboratorObj);
-                 });
                
        return githubCollaboratorForm;
 };

@@ -5,7 +5,7 @@ import {fetchIssuesController} from './fetch-issues.controller.js';
 import {renderConfirmMsg}  from '../create-repo/message-render.js';
 
 //module.exports = (recastObj) => {
-    function fetchIssuesWidget(recastObj){
+ function fetchIssuesWidget(recastObj){
 
       const githubFetchIssueForm = createHTMLElement(`
       <div class="createWidget" id="createWidget">
@@ -56,26 +56,7 @@ import {renderConfirmMsg}  from '../create-repo/message-render.js';
 </div>
       `);
 
-
-      const addButton = githubFetchIssueForm.querySelector('#confirmId');
-                
-                 addButton.addEventListener('click', e => {
-                        e.preventDefault();
-                        console.log("jb");
-                         recastObj.repoName = document.getElementById('repositoryName').value
-                         //let issueDetails = fetchIssuesController(recastObj);
-                        
-                        fetchIssuesController(recastObj)
-                            .then((data) => {
-                            console.log(data); 
-                            issueListWidget(data);
-                            }).catch((error) => {
-                            var msg = 'Error While retreving issues';
-                            renderConfirmMsg(msg,"error");
-                        });
-
-                         
-                 });
+     
         
        return githubFetchIssueForm;
 };
@@ -115,6 +96,6 @@ function issueListWidget(issuesList){
 }
 
 
- export {fetchIssuesWidget};
+ export {fetchIssuesWidget,issueListWidget};
 
  
