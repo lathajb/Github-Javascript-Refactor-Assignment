@@ -26,7 +26,7 @@ let repositoryObj = {
 };
 
         let createRepoObj = {
-            id:parseInt(repositoryObj.id),
+            id:repositoryObj.id,
             createRepo: {
                 name: repositoryObj.name,
                 description: repositoryObj.description,

@@ -37,14 +37,15 @@ const recastObj = {
      if(resp){
       let resultObj = JSON.parse(localStorage.getItem('redux-store'));
 
-      console.log("******************",resultObj);
+      console.log("******************",JSON.stringify(resultObj));
+
       resultObj.forEach(query => {
-          console.log(query);
+          console.log("Query ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" +JSON.stringify(query));
 
               var tempObj ={
                 queryText : query.createRepo.name,
-                id: query.createRepoObj.id,
-                description : query.createRepoObj.createRepo.description
+                id: query.createRepo.id,
+                description : query.createRepo.description
               }
               createRepositoryView(tempObj); 
       });
