@@ -24,12 +24,13 @@ const recastObj = {
 };
 
 
-//  document.addEventListener('DOMContentLoaded', (event) => {
-//   // $('[data-toggle="tooltip"]').tooltip();
+ document.addEventListener('DOMContentLoaded', (event) => {
+  // $('[data-toggle="tooltip"]').tooltip();
 
 
-window.onload = function () {
-   document.getElementById('searchQuery').addEventListener('click', invokeRecastApi);
+ document.getElementById('searchQuery').addEventListener('click', invokeRecastApi);
+   
+   
    console.log(" **************************** :" , JSON.parse(localStorage.getItem('redux-store')));
      const resp = localStorage.getItem('redux-store');
   
@@ -38,18 +39,20 @@ window.onload = function () {
 
       console.log("******************",resultObj);
       resultObj.forEach(query => {
-          console.log(query.slug);
-              createRepositoryView(resultObj); 
+          console.log(query);
+
+              var tempObj ={
+                queryText : query.createRepo.name,
+                id: query.createRepoObj.id,
+                description : query.createRepoObj.createRepo.description
+              }
+              createRepositoryView(tempObj); 
       });
   }
-  
-  
-}
 
 
-
-//   //invokeLoginView();
-// });
+  //invokeLoginView();
+});
 
 
 function invokeRecastApi() {

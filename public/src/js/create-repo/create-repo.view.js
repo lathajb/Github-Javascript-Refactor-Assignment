@@ -1,19 +1,22 @@
 'use strict';
 
-import {createWidgetHTML} from './create-repo.widget';
+import {createRepoWidget} from './create-repo.widget';
 
-
-let repositoryObj = {
-            name: null,
-            description: null,
-            homepage: "https://github.com",
-            private: false
-};
 
 
 function createRepositoryView(recastObj){
-  repositoryObj.name = recastObj.queryText;
-  return createWidgetHTML(repositoryObj);
+  
+   const fetchRepositoryModal = createRepoWidget(recastObj);
+
+    console.log(JSON.stringify(fetchRepositoryModal)+" fetchRepositoryModal");
+    const widget = document.getElementById('createWidget');
+      const parentObj = document.getElementById('searchFeature');
+      if (widget !== null) {
+        parentObj.removeChild(document.getElementById('createWidget'));
+      }
+
+    return parentObj.prepend(fetchRepositoryModal);
+
 }
 
 export {createRepositoryView};

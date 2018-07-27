@@ -36,28 +36,29 @@ function invokeRecastIntentApi(recastObj) {
         console.log(`repository name :${JSON.stringify(data.results.entities.git_repo[0])}`);
         recastObj.queryText = queryName;
          console.log("Current state :"+store.getState());
-  
-         let payload = [];
-         let ressult = {
-            slug : data.results.intents[0].slug,
-            queryText : recastObj.queryText,
-            repoName : recastObj.queryText,
-            isWidgetReady : true,
-            completion : false
-         }
-         payload.push(ressult);
 
          const createRepoObj = {
            id: 1, 
            createRepo: {
-             name: 'my repo name',
-             description: 'some description'
-           },
-           response: ''
+             name: queryName,
+             description: '',
+             response: ''
+           }, 
          }
+
+          let currentObjId = store.getState();
+          if(currentObjId){
+               console.log(currentObjId[currentObjId.length-1].id , "currentObjId");
+               createRepoObj.id =currentObjId[currentObjId.length-1].id + 1;
+               recastObj.id =  createRepoObj.id + 1;
+          }else{
+            recastObj.id = 1;
+          }
          
+         console.log("Before widget render : " , recastObj);
          store.dispatch({type:constants.RECAST_API_QUERY_CHANGE, createRepoObj});
          createRepositoryView(recastObj);
+         
       }
       if (data.results.intents[0].slug === 'create-issue' && typeof data.results.entities.git_issue !== 'undefined' && data.results.entities.git_issue !== null) {
         queryName = data.results.entities.git_issue[0].value;
